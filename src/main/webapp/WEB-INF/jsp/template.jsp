@@ -16,12 +16,34 @@
 <fmt:bundle basename="locale">
     <header>
         <fmt:setLocale value="${language_ch}" scope="session"/>
+            <%--        <div id="containerHeader" class="container-fluid">--%>
+            <%--        <div class="container-fluid">--%>
+
+            <%--        </div>--%>
         <div id="containerHeader" class="container-fluid">
             <div class="container-fluid">
                 <div class="row">
 
                     <div class="col-sm-2">
+                        <select class="btn btn-link btn btn-sm" name="language_page" id="language_page"
+                                onchange="SelectLanguage()">
+                            <c:forEach items="${language_list}" var="t" varStatus="i">
+                                <c:choose>
+                                    <c:when test="${t.getShot_name() eq language_ch}">
+                                        <option selected value="${t.getShot_name()}">${t.getLanguage()}</option>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <option value="${t.getShot_name()}">${t.getLanguage()}</option>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <div class="col-sm"></div>
+                </div>
+                <div class="row">
 
+                    <div class="col-sm-2">
 
                     </div>
                     <div id="titleHeader" class="col-sm-8">
@@ -40,7 +62,6 @@
 
                 </div>
             </div>
-
         </div>
     </header>
 

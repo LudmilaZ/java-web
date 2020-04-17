@@ -23,6 +23,8 @@ public class EncodingFilter implements Filter {
 
         HttpServletRequest  req =(HttpServletRequest) servletRequest;
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
+        LangChange langChange =new LangChange();
+        langChange.langChange(req,resp,req.getRequestURI());
         Cookie [] cookies = req.getCookies();
         if (CoociesUtils.isContainCookies(cookies,"countPage")){
         int count=  Integer.parseInt(CoociesUtils.getCookieByName("countPage",cookies).getValue());
@@ -36,8 +38,7 @@ public class EncodingFilter implements Filter {
         }
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
-//        LangChange langChange =new LangChange();
-//        langChange.langChange(req,resp,req.getRequestURI());
+
         filterChain.doFilter(req,resp);
 
     }
